@@ -1,0 +1,547 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<style>
+  body { font-family: Calibri, Arial, sans-serif; font-size: 11pt; color: #222; margin: 2cm; line-height: 1.5; }
+  h1 { font-size: 22pt; color: #ff7a00; text-align: center; margin-bottom: 4px; }
+  h2 { font-size: 15pt; color: #ff7a00; border-bottom: 2px solid #ff7a00; margin-top: 24px; padding-bottom: 4px; }
+  h3 { font-size: 12pt; color: #c05a00; margin-top: 16px; }
+  .subtitle { text-align: center; color: #888; font-size: 10pt; margin-bottom: 30px; }
+  .cover { text-align: center; margin-bottom: 40px; padding: 30px; background: #fff8f0; border: 2px solid #ff7a00; border-radius: 8px; }
+  .cover img { font-size: 60pt; display: block; margin: 10px auto; }
+  table { border-collapse: collapse; width: 100%; margin: 12px 0; font-size: 10pt; }
+  th { background: #ff7a00; color: white; padding: 8px 10px; text-align: left; }
+  td { border: 1px solid #ddd; padding: 7px 10px; vertical-align: top; }
+  tr:nth-child(even) td { background: #fff8f0; }
+  code, pre { font-family: Consolas, monospace; background: #f4f4f4; padding: 2px 6px; border-radius: 3px; font-size: 9.5pt; }
+  pre { display: block; padding: 14px; margin: 10px 0; overflow-x: auto; border-left: 4px solid #ff7a00; white-space: pre-wrap; }
+  .box { background: #fff8f0; border-left: 4px solid #ff7a00; padding: 12px 16px; margin: 12px 0; border-radius: 0 6px 6px 0; }
+  .box-blue { background: #f0f4ff; border-left: 4px solid #3b82f6; padding: 12px 16px; margin: 12px 0; border-radius: 0 6px 6px 0; }
+  .box-green { background: #f0fff4; border-left: 4px solid #22c55e; padding: 12px 16px; margin: 12px 0; border-radius: 0 6px 6px 0; }
+  .box-red { background: #fff0f0; border-left: 4px solid #ef4444; padding: 12px 16px; margin: 12px 0; border-radius: 0 6px 6px 0; }
+  .tag { display: inline-block; background: #ff7a00; color: white; font-size: 8pt; padding: 2px 8px; border-radius: 10px; margin: 2px; }
+  .tag-blue { background: #3b82f6; }
+  .tag-green { background: #22c55e; color: #000; }
+  .tag-gray { background: #888; }
+  ul li { margin: 4px 0; }
+  ol li { margin: 6px 0; }
+  .pagebreak { page-break-before: always; }
+  .flow { background: #f9f9f9; border: 1px solid #ddd; padding: 16px; border-radius: 6px; font-family: monospace; font-size: 10pt; text-align: center; line-height: 2; }
+  .mejora { background: #fff8f0; border: 1px solid #ff7a00; border-radius: 6px; padding: 14px; margin: 10px 0; }
+  .mejora h3 { margin: 0 0 8px 0; color: #ff7a00; }
+  .estado { font-size: 8pt; font-weight: bold; padding: 2px 8px; border-radius: 10px; float: right; }
+  .activo { background: #22c55e; color: #000; }
+  .pendiente { background: #fbbf24; color: #000; }
+  .futuro { background: #3b82f6; color: #fff; }
+  .firma { margin-top: 60px; display: flex; justify-content: space-between; }
+  .firma-box { text-align: center; width: 40%; border-top: 1px solid #333; padding-top: 8px; font-size: 10pt; }
+</style>
+</head>
+<body>
+
+<!-- PORTADA -->
+<div class="cover">
+  <div style="font-size:60pt;margin-bottom:10px">🐻</div>
+  <h1>ALFARO</h1>
+  <div style="font-size:14pt;color:#ff7a00;margin:6px 0">Entrenador de Ventas con Inteligencia Artificial</div>
+  <div style="font-size:11pt;color:#666;margin:10px 0">Powered by Inverfin · FAMA</div>
+  <hr style="border:1px solid #ff7a00;margin:16px 40px">
+  <div style="font-size:10pt;color:#888">
+    <b>Versión:</b> 1.0 &nbsp;|&nbsp; <b>Fecha:</b> Abril 2026 &nbsp;|&nbsp; <b>Confidencial</b>
+  </div>
+</div>
+
+<!-- ÍNDICE -->
+<h2>Índice de contenidos</h2>
+<ol>
+  <li>¿Qué es ALFARO?</li>
+  <li>Flujo de una sesión de entrenamiento</li>
+  <li>Rúbrica de evaluación</li>
+  <li>Catálogo de productos incluidos</li>
+  <li>Perfiles de clientes simulados</li>
+  <li>URLs y accesos del sistema</li>
+  <li>Arquitectura técnica</li>
+  <li>Código fuente — archivos del sistema</li>
+  <li>Variables de entorno en Railway</li>
+  <li>Compatibilidad por dispositivo</li>
+  <li>Costos estimados</li>
+  <li><strong>Mejoras planificadas — Hoja de ruta</strong></li>
+  <li>Instructivo para el equipo técnico</li>
+  <li>Glosario</li>
+</ol>
+
+<div class="pagebreak"></div>
+
+<!-- SECCIÓN 1 -->
+<h2>1. ¿Qué es ALFARO?</h2>
+<p>
+ALFARO es un simulador de ventas con inteligencia artificial diseñado para entrenar a los vendedores de Inverfin. Su nombre hace referencia al entrenador de la Albirroja, reflejando su rol de coach y formador.
+</p>
+<p>
+El sistema utiliza un avatar del <b>Oso FAMA</b> — mascota oficial de Inverfin — que simula ser un cliente real con dudas, objeciones y personalidad definida. El vendedor debe demostrar sus habilidades de venta respondiendo en tiempo real, con productos reales del catálogo de Inverfin.
+</p>
+
+<div class="box">
+  <b>🎯 Objetivo principal:</b> Que cada vendedor pueda practicar situaciones reales de venta sin el riesgo de perder un cliente real, recibiendo feedback inmediato y objetivo de la IA.
+</div>
+
+<h3>Características actuales</h3>
+<ul>
+  <li><span class="tag">✅ Activo</span> <b>27 productos reales</b> del catálogo inverfin.com.py con precios y cuotas vigentes</li>
+  <li><span class="tag">✅ Activo</span> <b>Cliente simulado por IA</b> con perfil, objeciones y lenguaje paraguayo natural</li>
+  <li><span class="tag">✅ Activo</span> <b>Voz del cliente</b> — síntesis de voz compatible con iPhone y Android</li>
+  <li><span class="tag">✅ Activo</span> <b>Respuesta por micrófono</b> — el vendedor puede hablar en lugar de escribir</li>
+  <li><span class="tag">✅ Activo</span> <b>Evaluación automática</b> en 5 dimensiones con puntaje 0-100</li>
+  <li><span class="tag">✅ Activo</span> <b>Oso FAMA animado</b> — parpadea y mueve la boca al hablar</li>
+  <li><span class="tag">✅ Activo</span> <b>Acceso vía URL</b> — funciona en cualquier celular sin instalar nada</li>
+</ul>
+
+<div class="pagebreak"></div>
+
+<!-- SECCIÓN 2 -->
+<h2>2. Flujo de una sesión de entrenamiento</h2>
+
+<div class="flow">
+  📱 Vendedor abre la app en su celular<br>↓<br>
+  ▶ Presiona "Iniciar sesión"<br>↓<br>
+  🎲 Se selecciona 1 producto al azar del catálogo (27 disponibles)<br>↓<br>
+  📦 ALFARO presenta el escenario: producto + perfil de cliente<br>↓<br>
+  🔵 <b>Pregunta 1:</b> El cliente saluda con interés pero con dudas<br>
+  🟢 Vendedor responde (texto o voz)<br>↓
+  🔵 <b>Pregunta 2:</b> El cliente plantea su objeción principal<br>
+  🟢 Vendedor maneja la objeción<br>↓<br>
+  🔵 <b>Pregunta 3:</b> El cliente consulta por financiamiento<br>
+  🟢 Vendedor cierra la conversación<br>↓<br>
+  📊 ALFARO evalúa y muestra puntaje detallado con carita<br>↓<br>
+  🔄 El vendedor puede iniciar nueva sesión con producto diferente
+</div>
+
+<p>Cada pregunta permite hasta <b>3 intercambios</b> entre el cliente simulado y el vendedor, generando conversaciones naturales y fluidas. El sistema usa el historial completo de la conversación para mantener coherencia y contexto.</p>
+
+<div class="pagebreak"></div>
+
+<!-- SECCIÓN 3 -->
+<h2>3. Rúbrica de evaluación</h2>
+
+<table>
+  <tr><th>Dimensión</th><th>Descripción</th><th>Puntos</th></tr>
+  <tr><td><b>Apertura y empatía</b></td><td>Saludo cordial, conexión con el cliente, generación de confianza</td><td>20 pts</td></tr>
+  <tr><td><b>Descubrimiento de necesidades</b></td><td>Preguntas para entender la situación y necesidad real del cliente</td><td>20 pts</td></tr>
+  <tr><td><b>Propuesta de valor</b></td><td>Presentación clara de beneficios del producto según la necesidad detectada</td><td>20 pts</td></tr>
+  <tr><td><b>Manejo de objeciones</b></td><td>Respuesta efectiva a dudas y objeciones del cliente sin presionar</td><td>25 pts</td></tr>
+  <tr><td><b>Cierre y siguiente paso</b></td><td>Propuesta concreta de acción, cuotas, visita a sucursal o compra</td><td>15 pts</td></tr>
+  <tr><td colspan="2"><b>TOTAL</b></td><td><b>100 pts</b></td></tr>
+</table>
+
+<h3>Resultado final</h3>
+<table>
+  <tr><th>Carita</th><th>Rango</th><th>Categoría</th></tr>
+  <tr><td style="font-size:18pt">😞</td><td>0 – 59 puntos</td><td>Necesita mejorar — se recomienda repetir el entrenamiento</td></tr>
+  <tr><td style="font-size:18pt">😐</td><td>60 – 79 puntos</td><td>Desempeño aceptable — hay áreas a fortalecer</td></tr>
+  <tr><td style="font-size:18pt">🙂</td><td>80 – 100 puntos</td><td>Excelente desempeño — vendedor preparado</td></tr>
+</table>
+
+<div class="pagebreak"></div>
+
+<!-- SECCIÓN 4 -->
+<h2>4. Catálogo de productos incluidos</h2>
+
+<table>
+  <tr><th>Categoría</th><th>Producto</th><th>Precio contado</th><th>Cuotas</th></tr>
+  <tr><td rowspan="6">📺 Televisores FAMA</td><td>TV FAMA 32" TVF-32E20 HD SMART NXT GEN</td><td>Gs. 1.190.000</td><td>18 x Gs. 95.000</td></tr>
+  <tr><td>TV FAMA 40" TVF-40E20 FHD SMART NXT GEN</td><td>Gs. 1.590.000</td><td>18 x Gs. 127.000</td></tr>
+  <tr><td>TV FAMA 43" TVF-43AU20 FHD SMART</td><td>Gs. 1.869.000</td><td>18 x Gs. 149.000</td></tr>
+  <tr><td>TV FAMA 55" TVF-55EL1 UHD 4K SMART</td><td>Gs. 2.795.000</td><td>18 x Gs. 224.000</td></tr>
+  <tr><td>TV FAMA 65" TVF-65EL1 UHD 4K SMART</td><td>Gs. 3.865.000</td><td>18 x Gs. 309.000</td></tr>
+  <tr><td>TV FAMA 75" TVF-75QL1 QLED SMART</td><td>Gs. 5.899.000</td><td>18 x Gs. 472.000</td></tr>
+  <tr><td rowspan="3">❄️ Aires FAMA</td><td>AIRE FAMA 12.000 BTU AF-12AT R410A</td><td>Gs. 2.035.000</td><td>18 x Gs. 169.000</td></tr>
+  <tr><td>AIRE FAMA 12.000 BTU AF-12AA INVERTER</td><td>Gs. 3.038.000</td><td>18 x Gs. 259.000</td></tr>
+  <tr><td>AIRE GOODWEATHER 18.000 BTU GW-18FO</td><td>Gs. 3.699.000</td><td>18 x Gs. 329.000</td></tr>
+  <tr><td rowspan="3">🫧 Lavarropas FAMA</td><td>LAVARROPA FAMA YERUTI 6KG GRIS</td><td>Gs. 670.000</td><td>18 x Gs. 53.000</td></tr>
+  <tr><td>LAVARROPA FAMA MAXI 6KG</td><td>Gs. 1.489.000</td><td>18 x Gs. 119.000</td></tr>
+  <tr><td>LAVARROPAS FAMA LAF-E8 8KG</td><td>Gs. 1.989.000</td><td>18 x Gs. 159.000</td></tr>
+  <tr><td rowspan="2">🧊 Heladeras FAMA</td><td>HELADERA MINI FAMA H-12 118 LTS</td><td>Gs. 1.499.000</td><td>18 x Gs. 120.000</td></tr>
+  <tr><td>HELADERA FAMA H-300 212 LTS</td><td>Gs. 1.869.000</td><td>18 x Gs. 149.000</td></tr>
+  <tr><td rowspan="3">🧊 Congeladores FAMA</td><td>CONGELADOR FAMA CF-100 100 LTS</td><td>Gs. 1.350.000</td><td>18 x Gs. 108.000</td></tr>
+  <tr><td>CONGELADOR FAMA CF-200H 200 LTS</td><td>Gs. 2.700.000</td><td>18 x Gs. 216.000</td></tr>
+  <tr><td>CONGELADOR FAMA CF-300SD 300 LTS</td><td>Gs. 2.695.000</td><td>18 x Gs. 216.000</td></tr>
+  <tr><td rowspan="3">💡 Microondas FAMA</td><td>MICROONDAS FAMA MF-20AP 20 LTS</td><td>Gs. 539.000</td><td>18 x Gs. 43.000</td></tr>
+  <tr><td>MICROONDAS FAMA MF-25AP 25 LTS</td><td>Gs. 734.000</td><td>18 x Gs. 59.000</td></tr>
+  <tr><td>MICROONDAS FAMA 30LT P90N30AP-S3</td><td>Gs. 850.000</td><td>18 x Gs. 68.000</td></tr>
+  <tr><td>🏍️ Motos TAIGA</td><td>MOTO TAIGA TL200 CR3</td><td>Gs. 10.990.000</td><td>30 x Gs. 599.000</td></tr>
+  <tr><td rowspan="2">🍳 Cocinas FAMA</td><td>COCINA FAMA JUNIOR 4H BLANCO</td><td>Gs. 369.000</td><td>18 x Gs. 29.000</td></tr>
+  <tr><td>COCINA FAMA ARIA 4H BLANCO CL</td><td>Gs. 789.000</td><td>18 x Gs. 63.000</td></tr>
+  <tr><td>🏪 Exhibidores FAMA</td><td>EXHIBIDOR FAMA EF-250H 250L FRÍO HÚMEDO</td><td>Gs. 2.779.000</td><td>18 x Gs. 222.000</td></tr>
+</table>
+
+<div class="pagebreak"></div>
+
+<!-- SECCIÓN 5 -->
+<h2>5. Perfiles de clientes simulados</h2>
+
+<table>
+  <tr><th>Perfil</th><th>Voz</th><th>Características</th><th>Ejemplos de clientes</th></tr>
+  <tr><td><b>Ama de casa</b></td><td>Suave, pausada</td><td>Busca practicidad, consulta con el marido, sensible al precio</td><td>Señora Rosa, Carmen, Gladys, Ana</td></tr>
+  <tr><td><b>Joven</b></td><td>Rápida, aguda</td><td>Presupuesto ajustado, compara opciones, primera compra</td><td>Estudiante universitaria, delivery</td></tr>
+  <tr><td><b>Profesional</b></td><td>Clara, normal</td><td>Exigente en calidad, compara marcas, analítico</td><td>Arquitecto, gerente de oficina</td></tr>
+  <tr><td><b>Comerciante</b></td><td>Fluida, media</td><td>Orientado al negocio, calcula retorno, negocia</td><td>Dueño de farmacia, pollería, peluquería</td></tr>
+  <tr><td><b>Agricultor</b></td><td>Grave, lenta</td><td>Desconfiado, práctico, valora garantía local</td><td>Productor del interior, ganadero</td></tr>
+</table>
+
+<p>El sistema detecta automáticamente si la voz del navegador es femenina o masculina, adaptando el lenguaje del cliente (menciona "mi marido" o "mi esposa" según corresponda).</p>
+
+<div class="pagebreak"></div>
+
+<!-- SECCIÓN 6 -->
+<h2>6. URLs y accesos del sistema</h2>
+
+<table>
+  <tr><th>Componente</th><th>URL</th><th>Acceso</th></tr>
+  <tr><td><b>App para vendedores</b></td><td>https://aayalamit.github.io/-inverfin-backend/</td><td>Público</td></tr>
+  <tr><td><b>Backend API</b></td><td>https://inverfin-backend-production.up.railway.app</td><td>Privado</td></tr>
+  <tr><td><b>Repositorio GitHub</b></td><td>https://github.com/aayalaMit/-inverfin-backend</td><td>Admin</td></tr>
+  <tr><td><b>Panel Railway</b></td><td>https://railway.app/dashboard</td><td>Admin</td></tr>
+  <tr><td><b>Consola Anthropic</b></td><td>https://console.anthropic.com</td><td>Admin</td></tr>
+  <tr><td><b>Catálogo Inverfin</b></td><td>https://inverfin.com.py</td><td>Público</td></tr>
+</table>
+
+<div class="box-red">
+  <b>⚠️ Seguridad:</b> La API Key de Anthropic está almacenada únicamente como variable de entorno en Railway. Nunca debe compartirse ni incluirse en el código fuente. Rotarla periódicamente desde console.anthropic.com.
+</div>
+
+<!-- SECCIÓN 7 -->
+<h2>7. Arquitectura técnica</h2>
+
+<div class="flow">
+  [Vendedor — iPhone / Android / PC]<br>↓ HTTPS<br>
+  [GitHub Pages — index.html — Frontend]<br>↓ POST /chat<br>
+  [Railway — server.js — Backend Node.js]<br>↓ API call con x-api-key<br>
+  [Anthropic — Claude claude-sonnet-4-20250514]<br>↓ Respuesta JSON<br>
+  [Railway → GitHub Pages → Vendedor]
+</div>
+
+<h3>Tecnologías utilizadas</h3>
+<table>
+  <tr><th>Componente</th><th>Tecnología</th><th>Costo</th></tr>
+  <tr><td>Frontend</td><td>HTML + CSS + JavaScript puro (sin frameworks)</td><td>Gratis</td></tr>
+  <tr><td>Backend</td><td>Node.js + Express</td><td>Gratis</td></tr>
+  <tr><td>Hosting frontend</td><td>GitHub Pages</td><td>Gratis</td></tr>
+  <tr><td>Hosting backend</td><td>Railway</td><td>$5 USD/mes</td></tr>
+  <tr><td>Inteligencia Artificial</td><td>Claude claude-sonnet-4-20250514 (Anthropic)</td><td>Por uso ~$0.05/sesión</td></tr>
+  <tr><td>Voz del cliente</td><td>Web Speech API (nativa del navegador)</td><td>Gratis</td></tr>
+  <tr><td>Micrófono vendedor</td><td>Web Speech Recognition API</td><td>Gratis</td></tr>
+</table>
+
+<div class="pagebreak"></div>
+
+<!-- SECCIÓN 8 -->
+<h2>8. Código fuente — Archivos del sistema</h2>
+
+<h3>8.1 server.js — Backend en Railway</h3>
+<pre>
+const express = require('express');
+const cors = require('cors');
+
+const app = express();
+app.use(cors());
+app.use(express.json());
+
+const API_URL = 'https://api.anthropic.com/v1/messages';
+
+app.post('/chat', async (req, res) => {
+  const { messages, system } = req.body;
+  if (!messages || !system) {
+    return res.status(400).json({ error: 'Faltan campos messages o system' });
+  }
+  try {
+    const response = await fetch(API_URL, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+        'x-api-key': process.env.ANTHROPIC_API_KEY,
+        'anthropic-version': '2023-06-01',
+      },
+      body: JSON.stringify({
+        model: 'claude-sonnet-4-20250514',
+        max_tokens: 600,
+        system,
+        messages,
+      }),
+    });
+    const data = await response.json();
+    if (data.error) return res.status(500).json({ error: data.error.message });
+    res.json({ text: data.content?.[0]?.text || '' });
+  } catch (err) {
+    res.status(500).json({ error: err.message });
+  }
+});
+
+app.get('/', (req, res) => res.send('ALFARO — Simulador Inverfin API OK'));
+
+const PORT = process.env.PORT || 3000;
+app.listen(PORT, () => console.log(`Servidor en puerto ${PORT}`));
+</pre>
+
+<h3>8.2 package.json — Dependencias del backend</h3>
+<pre>
+{
+  "name": "inverfin-simulator-backend",
+  "version": "1.0.0",
+  "main": "server.js",
+  "scripts": { "start": "node server.js" },
+  "dependencies": {
+    "express": "^4.18.2",
+    "cors": "^2.8.5"
+  }
+}
+</pre>
+
+<div class="box">
+  <b>📁 Archivo index.html:</b> El frontend completo (más de 600 líneas) está disponible en el repositorio GitHub: <b>https://github.com/aayalaMit/-inverfin-backend/blob/main/index.html</b>
+  <br>Por su extensión se incluye como anexo digital al presente manual.
+</div>
+
+<div class="pagebreak"></div>
+
+<!-- SECCIÓN 9 -->
+<h2>9. Variables de entorno en Railway</h2>
+
+<table>
+  <tr><th>Variable</th><th>Valor</th><th>Descripción</th></tr>
+  <tr><td><code>ANTHROPIC_API_KEY</code></td><td><code>sk-ant-api03-...</code></td><td>API key de Anthropic. Nunca compartir.</td></tr>
+  <tr><td><code>PORT</code></td><td>Automático</td><td>Asignado por Railway automáticamente.</td></tr>
+</table>
+
+<h3>Pasos para configurar o actualizar la API Key</h3>
+<ol>
+  <li>Ir a <b>railway.app/dashboard</b></li>
+  <li>Click en el proyecto <b>feisty-blessing</b></li>
+  <li>Click en el servicio <b>-inverfin-backend</b></li>
+  <li>Tab <b>Variables</b></li>
+  <li>Click en los tres puntos (⋮) al lado de <code>ANTHROPIC_API_KEY</code> → Edit</li>
+  <li>Pegar el nuevo valor y guardar</li>
+  <li>Click en <b>Deploy</b> para aplicar los cambios</li>
+</ol>
+
+<!-- SECCIÓN 10 -->
+<h2>10. Compatibilidad por dispositivo</h2>
+
+<table>
+  <tr><th>Dispositivo</th><th>Navegador</th><th>App</th><th>Voz cliente</th><th>Micrófono</th></tr>
+  <tr><td>iPhone</td><td>Safari</td><td>✅</td><td>✅</td><td>✅</td></tr>
+  <tr><td>Android</td><td>Chrome</td><td>✅</td><td>✅</td><td>✅</td></tr>
+  <tr><td>PC / Mac</td><td>Chrome</td><td>✅</td><td>✅</td><td>✅</td></tr>
+  <tr><td>PC / Mac</td><td>Edge</td><td>✅</td><td>✅</td><td>✅</td></tr>
+  <tr><td>PC / Mac</td><td>Firefox</td><td>✅</td><td>✅</td><td>⚠️ Limitado</td></tr>
+  <tr><td>PC / Mac</td><td>Safari</td><td>✅</td><td>⚠️</td><td>⚠️</td></tr>
+</table>
+
+<div class="box">
+  <b>📱 Nota iPhone:</b> El volumen físico debe estar activo y el switch lateral de silencio debe estar apagado para escuchar la voz del cliente simulado.
+</div>
+
+<!-- SECCIÓN 11 -->
+<h2>11. Costos estimados</h2>
+
+<table>
+  <tr><th>Servicio</th><th>Plan actual</th><th>Costo mensual</th></tr>
+  <tr><td>GitHub Pages</td><td>Gratis</td><td>$0</td></tr>
+  <tr><td>Railway</td><td>Hobby (recomendado)</td><td>$5 USD</td></tr>
+  <tr><td>Anthropic API</td><td>Por uso</td><td>Variable</td></tr>
+</table>
+
+<h3>Estimado de consumo Anthropic API</h3>
+<table>
+  <tr><th>Escenario</th><th>Sesiones/mes</th><th>Costo estimado</th></tr>
+  <tr><td>5 vendedores — uso moderado</td><td>~150</td><td>~$7 USD/mes</td></tr>
+  <tr><td>10 vendedores — uso diario</td><td>~600</td><td>~$30 USD/mes</td></tr>
+  <tr><td>30 vendedores — uso intensivo</td><td>~2.000</td><td>~$100 USD/mes</td></tr>
+</table>
+
+<div class="pagebreak"></div>
+
+<!-- SECCIÓN 12 — MEJORAS -->
+<h2>12. Mejoras planificadas — Hoja de ruta</h2>
+
+<p>A continuación se detallan las tres mejoras prioritarias identificadas para hacer el sistema más completo, seguro y escalable:</p>
+
+<!-- MEJORA 1 -->
+<div class="mejora">
+  <h3>🔌 Mejora 1 — Conexión con el catálogo digital de Inverfin <span class="estado pendiente">PENDIENTE</span></h3>
+  <p><b>Situación actual:</b> Los productos están guardados manualmente en el código HTML. Cada vez que Inverfin cambia un precio o agrega un producto, hay que editar el código a mano.</p>
+  <p><b>Solución propuesta:</b> Conectar la app directamente con la API de Shopify que usa Inverfin (<code>inverfin.com.py/collections/*/products.json</code>) para obtener productos, precios y cuotas en tiempo real.</p>
+  <p><b>Beneficios:</b></p>
+  <ul>
+    <li>Precios siempre actualizados automáticamente</li>
+    <li>Nuevos productos disponibles sin tocar el código</li>
+    <li>Más de 200 productos disponibles vs. 27 actuales</li>
+    <li>Imágenes reales de cada producto</li>
+  </ul>
+  <p><b>Implementación técnica:</b> El backend en Railway hace el fetch a la API de Inverfin (evitando el bloqueo CORS del navegador), filtra productos por categoría y los entrega al frontend.</p>
+  <p><b>Esfuerzo estimado:</b> 4–6 horas de desarrollo | <b>Costo adicional:</b> $0</p>
+</div>
+
+<!-- MEJORA 2 -->
+<div class="mejora">
+  <h3>🔐 Mejora 2 — Sistema de autenticación por vendedor <span class="estado pendiente">PENDIENTE</span></h3>
+  <p><b>Situación actual:</b> La app es pública — cualquier persona con el link puede usarla y consumir créditos de la API.</p>
+  <p><b>Solución propuesta:</b> Implementar un sistema de login con código único por vendedor, administrado desde el backend.</p>
+
+  <h3>Flujo propuesto</h3>
+  <div class="flow" style="font-size:9.5pt">
+    Vendedor abre la app<br>↓<br>
+    Ingresa su código personal (ej: CARLOS01)<br>↓<br>
+    Backend valida el código contra la base de datos<br>↓<br>
+    ✅ Código válido → accede a la sesión de entrenamiento<br>
+    ❌ Código inválido → mensaje de error, no puede continuar
+  </div>
+
+  <p><b>Datos del vendedor a registrar:</b></p>
+  <table>
+    <tr><th>Campo</th><th>Ejemplo</th></tr>
+    <tr><td>Código único</td><td>CARLOS01</td></tr>
+    <tr><td>Nombre completo</td><td>Carlos Ramírez</td></tr>
+    <tr><td>Sucursal</td><td>Artigas Casa Central</td></tr>
+    <tr><td>Email</td><td>cramirez@inverfin.com.py</td></tr>
+    <tr><td>Estado</td><td>Activo / Inactivo</td></tr>
+  </table>
+
+  <p><b>Tecnología sugerida:</b> Supabase (base de datos PostgreSQL gratuita) para guardar vendedores y validar accesos.</p>
+  <p><b>Esfuerzo estimado:</b> 6–8 horas de desarrollo | <b>Costo adicional:</b> $0 (Supabase plan gratuito)</p>
+</div>
+
+<!-- MEJORA 3 -->
+<div class="mejora">
+  <h3>📊 Mejora 3 — Base de datos y dashboard de seguimiento <span class="estado futuro">FUTURO</span></h3>
+  <p><b>Situación actual:</b> Los resultados de cada sesión no se guardan. No hay forma de saber quién entrenó, cuánto mejoró ni qué dimensiones necesita reforzar.</p>
+  <p><b>Solución propuesta:</b> Guardar cada sesión en una base de datos y construir un dashboard de seguimiento para supervisores y gerentes.</p>
+
+  <h3>Datos a registrar por sesión</h3>
+  <table>
+    <tr><th>Campo</th><th>Ejemplo</th></tr>
+    <tr><td>ID vendedor</td><td>CARLOS01</td></tr>
+    <tr><td>Fecha y hora</td><td>2026-04-23 14:35</td></tr>
+    <tr><td>Producto del escenario</td><td>TV FAMA 43" FHD SMART</td></tr>
+    <tr><td>Puntaje apertura</td><td>16/20</td></tr>
+    <tr><td>Puntaje descubrimiento</td><td>14/20</td></tr>
+    <tr><td>Puntaje propuesta</td><td>17/20</td></tr>
+    <tr><td>Puntaje objeciones</td><td>20/25</td></tr>
+    <tr><td>Puntaje cierre</td><td>12/15</td></tr>
+    <tr><td>Puntaje total</td><td>79/100</td></tr>
+    <tr><td>Resultado</td><td>😐 Desempeño aceptable</td></tr>
+    <tr><td>Feedback IA</td><td>"Buen manejo de objeciones, pero el cierre fue débil..."</td></tr>
+  </table>
+
+  <h3>Dashboard — vistas propuestas</h3>
+  <ul>
+    <li><b>Vista gerente:</b> Ranking de vendedores por puntaje promedio, progreso por semana, vendedores que no han entrenado</li>
+    <li><b>Vista supervisor:</b> Detalle por sucursal, comparativo entre vendedores, dimensión más débil del equipo</li>
+    <li><b>Vista vendedor:</b> Mi historial de sesiones, mi progreso, mis áreas a mejorar</li>
+  </ul>
+
+  <h3>Tecnología sugerida</h3>
+  <table>
+    <tr><th>Componente</th><th>Tecnología</th><th>Costo</th></tr>
+    <tr><td>Base de datos</td><td>Supabase (PostgreSQL)</td><td>Gratis</td></tr>
+    <tr><td>Dashboard</td><td>Metabase o Google Looker Studio</td><td>Gratis</td></tr>
+    <tr><td>Integración</td><td>API REST desde backend Railway</td><td>$0 adicional</td></tr>
+  </table>
+
+  <p><b>Esfuerzo estimado:</b> 10–15 horas de desarrollo | <b>Costo adicional:</b> $0</p>
+</div>
+
+<h3>Resumen de hoja de ruta</h3>
+<table>
+  <tr><th>#</th><th>Mejora</th><th>Prioridad</th><th>Esfuerzo</th><th>Costo</th></tr>
+  <tr><td>1</td><td>Catálogo digital en tiempo real</td><td>Alta</td><td>4–6 hs</td><td>$0</td></tr>
+  <tr><td>2</td><td>Autenticación por vendedor</td><td>Alta</td><td>6–8 hs</td><td>$0</td></tr>
+  <tr><td>3</td><td>Base de datos + dashboard</td><td>Media</td><td>10–15 hs</td><td>$0</td></tr>
+</table>
+
+<div class="pagebreak"></div>
+
+<!-- SECCIÓN 13 -->
+<h2>13. Instructivo para el equipo técnico</h2>
+
+<h3>Cómo actualizar el catálogo de productos manualmente</h3>
+<ol>
+  <li>Ir a <b>github.com/aayalaMit/-inverfin-backend</b></li>
+  <li>Click en <code>index.html</code> → ícono del lápiz ✏️</li>
+  <li>Buscar con Ctrl+F: <code>var CAT=[</code></li>
+  <li>Agregar o modificar productos con este formato:</li>
+</ol>
+<pre>
+{
+  name: 'NOMBRE EXACTO DEL PRODUCTO',
+  price: 'Gs. X.XXX.000',
+  precioAntes: 'Gs. X.XXX.000',
+  cuotas: '18 x Gs. XX.000',
+  url: 'https://inverfin.com.py/products/handle',
+  perfil: 'comerciante',
+  client: 'Descripción del perfil del cliente',
+  objection: 'La objeción principal del cliente'
+},
+</pre>
+<p>Los valores de <code>perfil</code> disponibles son: <code>ama_casa</code>, <code>joven</code>, <code>profesional</code>, <code>comerciante</code>, <code>agricultor</code></p>
+
+<h3>Cómo redesplegar el backend en Railway</h3>
+<ol>
+  <li>Ir a railway.app/dashboard → proyecto → servicio</li>
+  <li>Tab <b>Deployments</b></li>
+  <li>Click en los tres puntos (⋮) del deploy más reciente</li>
+  <li>Click <b>Redeploy</b></li>
+  <li>Esperar 1–2 minutos hasta que aparezca "Deployment successful"</li>
+</ol>
+
+<h3>Cómo verificar que el backend está funcionando</h3>
+<p>Abrir en el navegador: <b>https://inverfin-backend-production.up.railway.app</b></p>
+<p>Debe mostrar el mensaje: <code>ALFARO — Simulador Inverfin API OK</code></p>
+
+<h3>Cómo actualizar el frontend (index.html)</h3>
+<ol>
+  <li>Ir al repositorio GitHub</li>
+  <li>Click en <code>index.html</code> → ícono del lápiz ✏️</li>
+  <li>Realizar los cambios necesarios</li>
+  <li>Click en <b>Commit changes</b> → <b>Commit changes</b></li>
+  <li>Esperar 2–3 minutos para que GitHub Pages actualice</li>
+  <li>Recargar con Ctrl+Shift+R para limpiar caché</li>
+</ol>
+
+<div class="pagebreak"></div>
+
+<!-- SECCIÓN 14 -->
+<h2>14. Glosario</h2>
+
+<table>
+  <tr><th>Término</th><th>Definición</th></tr>
+  <tr><td><b>API Key</b></td><td>Clave secreta para autenticar las llamadas a la API de Anthropic. No debe compartirse.</td></tr>
+  <tr><td><b>Railway</b></td><td>Plataforma en la nube donde corre el servidor backend (server.js).</td></tr>
+  <tr><td><b>GitHub Pages</b></td><td>Servicio gratuito de GitHub para publicar sitios web estáticos (index.html).</td></tr>
+  <tr><td><b>Claude</b></td><td>Modelo de inteligencia artificial de Anthropic que simula al cliente y evalúa al vendedor.</td></tr>
+  <tr><td><b>Web Speech API</b></td><td>Tecnología nativa del navegador para síntesis y reconocimiento de voz. Sin costo adicional.</td></tr>
+  <tr><td><b>Shopify</b></td><td>Plataforma de e-commerce usada por Inverfin. Expone una API pública de productos.</td></tr>
+  <tr><td><b>Supabase</b></td><td>Base de datos PostgreSQL en la nube, con plan gratuito. Se usará para autenticación y resultados.</td></tr>
+  <tr><td><b>CORS</b></td><td>Política de seguridad del navegador que bloquea llamadas entre dominios diferentes.</td></tr>
+  <tr><td><b>Deploy</b></td><td>Proceso de publicar una nueva versión del código en producción.</td></tr>
+  <tr><td><b>Variable de entorno</b></td><td>Configuración secreta guardada en el servidor, no visible en el código fuente.</td></tr>
+  <tr><td><b>Frontend</b></td><td>La parte visual de la app que ve el vendedor (index.html).</td></tr>
+  <tr><td><b>Backend</b></td><td>El servidor que procesa las solicitudes y se comunica con la API de Anthropic (server.js).</td></tr>
+</table>
+
+<br><br>
+
+<div class="box-green">
+  <b>✅ Documento preparado por:</b> Sistema ALFARO — Inverfin Digital<br>
+  <b>Fecha:</b> Abril 2026<br>
+  <b>Repositorio:</b> https://github.com/aayalaMit/-inverfin-backend<br>
+  <b>App:</b> https://aayalamit.github.io/-inverfin-backend/
+</div>
+
+<div class="firma">
+  <div class="firma-box">Responsable técnico<br><br></div>
+  <div class="firma-box">Gerencia Comercial<br><br></div>
+</div>
+
+</body>
+</html>
